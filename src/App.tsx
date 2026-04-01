@@ -17,7 +17,7 @@ export default function App() {
   }, [])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Trainingforme">
       <Routes>
         <Route path="/workout/new" element={<Layout hideNav><NewWorkout /></Layout>} />
         <Route path="/workout/:id/feedback" element={<Layout hideNav><WorkoutFeedback /></Layout>} />
