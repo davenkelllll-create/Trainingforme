@@ -70,16 +70,21 @@ export interface Goal {
 export interface UserProfile {
   name: string
   age: number
-  weight: number // kg
-  height: number // cm
+  birthDate?: string    // ISO date string
+  gender: Gender
+  weight: number        // kg
+  height: number        // cm
   restingHr: number
   maxHr: number
-  ftp?: number // Functional Threshold Power (cycling)
+  ftp?: number          // Functional Threshold Power (cycling)
+  fitnessLevel: FitnessLevel
+  primaryGoals: string[]
   units: 'metric' | 'imperial'
   garminConnected: boolean
   polarConnected: boolean
   garminToken?: string
   polarToken?: string
+  profileComplete: boolean
 }
 
 export interface WorkoutFeedback {
@@ -97,6 +102,25 @@ export interface FeedbackInsight {
   icon: string
   title: string
   detail: string
+}
+
+export type Gender = 'male' | 'female' | 'other'
+export type FitnessLevel = 'beginner' | 'intermediate' | 'advanced' | 'athlete'
+
+export interface BodyMeasurement {
+  id?: number
+  timestamp: number
+  weight: number        // kg
+  bodyFat?: number      // %
+  muscleMass?: number   // kg
+  boneMass?: number     // kg
+  waterPercent?: number // %
+  visceralFat?: number  // index 1-20
+  bmi?: number
+  bmr?: number          // kcal/day
+  metabolicAge?: number
+  source: 'bluetooth' | 'manual'
+  deviceName?: string
 }
 
 export interface PersonalRecord {

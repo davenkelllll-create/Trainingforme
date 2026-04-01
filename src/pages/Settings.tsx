@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Settings as SettingsIcon, User, Activity, Link, Trash2, ChevronRight } from 'lucide-react'
+import { useNavigate } from 'react-router-dom'
+import { Settings as SettingsIcon, User, Activity, Link, Trash2, ChevronRight, Scale } from 'lucide-react'
 import { useUserStore } from '../store/userStore'
 import { garminService } from '../services/garminService'
 import { polarService } from '../services/polarService'
@@ -9,6 +10,7 @@ import { Button } from '../components/ui/Button'
 import { Badge } from '../components/ui/Badge'
 
 export function Settings() {
+  const navigate = useNavigate()
   const { profile, updateProfile } = useUserStore()
   const [saved, setSaved] = useState(false)
 
@@ -33,6 +35,24 @@ export function Settings() {
         <SettingsIcon size={24} className="text-muted" />
         Einstellungen
       </h1>
+
+      {/* Quick Links */}
+      <div className="grid grid-cols-2 gap-3">
+        <Card onClick={() => navigate('/profile')} className="flex items-center gap-3 cursor-pointer">
+          <User size={20} className="text-purple" />
+          <div>
+            <div className="text-sm font-medium text-text-primary">Profil</div>
+            <div className="text-xs text-muted">Bearbeiten</div>
+          </div>
+        </Card>
+        <Card onClick={() => navigate('/body')} className="flex items-center gap-3 cursor-pointer">
+          <Scale size={20} className="text-accent" />
+          <div>
+            <div className="text-sm font-medium text-text-primary">Körper</div>
+            <div className="text-xs text-muted">Waage & Daten</div>
+          </div>
+        </Card>
+      </div>
 
       {saved && (
         <div className="bg-success/15 border border-success/30 rounded-lg px-4 py-2 text-success text-sm">

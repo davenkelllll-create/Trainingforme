@@ -50,6 +50,11 @@
   }
 }
 
+/* Shared form input style */
+.form-input {
+  @apply w-full bg-surface-2 text-text-primary rounded-lg px-3 py-2.5 text-sm border border-white/10 placeholder:text-muted focus:outline-none focus:border-accent/50;
+}
+
 /* Leaflet map dark style */
 .leaflet-container {
   background: #1a1a24 !important;

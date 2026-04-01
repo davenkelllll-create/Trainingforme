@@ -1,19 +1,19 @@
 import { NavLink } from 'react-router-dom'
-import { Home, Activity, BarChart2, Target, Settings } from 'lucide-react'
+import { Home, Activity, BarChart2, Target, User, Scale } from 'lucide-react'
 import clsx from 'clsx'
 
 const navItems = [
   { to: '/', icon: Home, label: 'Home' },
   { to: '/history', icon: Activity, label: 'History' },
-  { to: '/progress', icon: BarChart2, label: 'Progress' },
-  { to: '/goals', icon: Target, label: 'Goals' },
-  { to: '/settings', icon: Settings, label: 'Settings' },
+  { to: '/progress', icon: BarChart2, label: 'Fortschritt' },
+  { to: '/body', icon: Scale, label: 'Körper' },
+  { to: '/profile', icon: User, label: 'Profil' },
 ]
 
 export function BottomNav() {
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-40 bg-surface/90 backdrop-blur-md border-t border-white/5 safe-bottom">
-      <div className="flex items-center justify-around px-2 pt-2 pb-1" style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}>
+      <div className="flex items-center justify-around px-2 pt-2" style={{ paddingBottom: 'max(8px, env(safe-area-inset-bottom))' }}>
         {navItems.map(({ to, icon: Icon, label }) => (
           <NavLink
             key={to}

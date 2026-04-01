@@ -130,6 +130,12 @@ export function Dashboard() {
             </button>
           ))}
         </div>
+        <button
+          onClick={() => navigate('/workout/manual')}
+          className="mt-3 w-full border border-dashed border-white/20 rounded-card py-3 text-muted text-sm flex items-center justify-center gap-2 hover:border-accent/40 hover:text-accent transition-colors"
+        >
+          ✏️ Garmin-Daten manuell eintragen
+        </button>
       </div>
 
       {/* Active Goals */}

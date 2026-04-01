@@ -1,10 +1,11 @@
 import Dexie, { type Table } from 'dexie'
-import type { Workout, Goal, PersonalRecord, UserProfile } from '../types'
+import type { Workout, Goal, PersonalRecord, UserProfile, BodyMeasurement } from '../types'
 
 export class TrainingDatabase extends Dexie {
   workouts!: Table<Workout>
   goals!: Table<Goal>
   records!: Table<PersonalRecord>
+  bodyMeasurements!: Table<BodyMeasurement>
 
   constructor() {
     super('TrainingForMeDB')
@@ -12,6 +13,12 @@ export class TrainingDatabase extends Dexie {
       workouts: '++id, type, startTime, endTime, effortScore',
       goals: '++id, type, activityType, completed, createdAt',
       records: '++id, activityType, metric, date',
+    })
+    this.version(2).stores({
+      workouts: '++id, type, startTime, endTime, effortScore',
+      goals: '++id, type, activityType, completed, createdAt',
+      records: '++id, activityType, metric, date',
+      bodyMeasurements: '++id, timestamp',
     })
   }
 }
@@ -24,13 +31,17 @@ const PROFILE_KEY = 'tfm_user_profile'
 export const defaultProfile: UserProfile = {
   name: 'Athlet',
   age: 30,
+  gender: 'male',
   weight: 75,
   height: 175,
   restingHr: 60,
   maxHr: 190,
+  fitnessLevel: 'intermediate',
+  primaryGoals: [],
   units: 'metric',
   garminConnected: false,
   polarConnected: false,
+  profileComplete: false,
 }
 
 export function getProfile(): UserProfile {
